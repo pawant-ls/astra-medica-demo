@@ -4,8 +4,10 @@ import SecondaryPageHero from "../secondary-hero";
 function AboutComponent() {
   return (
     <main>
-      <SecondaryPageHero />
+      <SecondaryPageHero heroText="About astra medica" />
+      <div className="-mt-[20vh]">
       <About />
+      </div>
     </main>
   );
 }

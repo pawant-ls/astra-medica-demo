@@ -60,7 +60,7 @@ function Header() {
 
   useEffect(() => {
     if (!linkRef.current || !headRef.current) return;
-    const el = gsap.utils.toArray(linkRef.current.children);
+    const el = gsap.utils.toArray<HTMLDivElement>(linkRef.current.children);
 
     gsap.set([headRef.current, ...el], ANIMATION_CONFIG.initial);
 

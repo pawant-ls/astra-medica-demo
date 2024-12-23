@@ -27,10 +27,10 @@ function HoverCard({ heading, para, icon }: HoverProps) {
         scale: 0,
       },
       {
+        scale: 4,
         opacity: 1,
-        scale: 64,
-        duration: 0.5,
-        ease: "none",
+        ease: "back",
+        duration: 0.8,
       }
     );
     tlRef.current = tl;
@@ -52,26 +52,21 @@ function HoverCard({ heading, para, icon }: HoverProps) {
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="flex flex-col justify-center items-center h-[40vh] px-8 space-y-6"
+      className="flex flex-col justify-center items-center h-[40vh] px-8 space-y-6 cursor-pointer"
     >
       <div className="relative transition-all duration-700 overflow-hidden grid grid-cols-1 items-center p-8 bg-primary/10 rounded-full">
         <div
           ref={circleRef}
-          className="absolute opacity-0 z-0 bg-primary rounded-full top-1/2 right-1/2 h-[2px] w-[2px] -translate-x-1/4 -translate-y-1/4"
+          className="absolute opacity-0 z-0 bg-primary rounded-full inset-0 m-auto h-[32px] w-[32px]"
         ></div>
         <div
           className={cn(
-            "z-10 text-[48px]",
+            "z-10 transition-all duration-500",
             hovered ? "text-[#fafafa]" : "text-[#22b6af]"
           )}
         >
           {icon}
         </div>
-        {/* <MicroscopeIcon
-          className="z-10"
-          color={}
-          size={48}
-        /> */}
       </div>
 
       <h6 className="font-heading font-bold text-xl capitalize text-black">

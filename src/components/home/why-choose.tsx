@@ -19,7 +19,7 @@ function WhyChoose() {
         scrub: true,
         toggleActions: "play none none none",
       },
-      y: 100,
+      y: 200,
       duration: 1,
     });
     gsap.to(img1Ref2.current, {
@@ -28,8 +28,8 @@ function WhyChoose() {
         scrub: true,
         toggleActions: "play none none none",
       },
-      y: -10,
-      duration: 1,
+      y: -20,
+      duration: 0.5,
     });
   });
   return (

@@ -26,7 +26,10 @@ const TeamCard = () => {
           className="object-cover bg-cover scale-150"
         />
       </div>
-      <div className="-mt-32 absolute left-10  rounded-[50px] h-[28vh] w-[80%] bg-white shadow-2xl"></div>
+      <div className="-mt-32 absolute flex flex-col items-center justify-center space-y-4 left-10 rounded-[50px] h-[28vh] w-[80%] bg-white shadow-2xl p-8">
+        <h6 className="font-heading font-bold text-xl capitalize">Dr. Gerard Butler</h6>
+        <p className="font-body font-normal text-mg capitalize text-black/50">PHD Student</p>
+      </div>
     </div>
   );
 };

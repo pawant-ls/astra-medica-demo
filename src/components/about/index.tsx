@@ -3,6 +3,7 @@
 import About from "../home/about";
 import OurTeam from "../home/team";
 import SecondaryPageHero from "../secondary-hero";
+import ClinicalService from "./clinical-service";
 import ResearchTopic from "./research-topic";
 import TestimonialsAbout from "./testimonials-about";
 
@@ -14,6 +15,7 @@ function AboutComponent() {
         <About />
       </div>
       <ResearchTopic />
+      <ClinicalService />
       <TestimonialsAbout />
 
       <OurTeam />

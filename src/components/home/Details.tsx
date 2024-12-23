@@ -12,17 +12,17 @@ const cards: Card[] = [
   {
     title: "Laboratory Services",
     description: "Excepteur sint occaecat pro dent sunt in culpa qui officia.",
-    icon: <MicroscopeIcon />,
+    icon: <MicroscopeIcon size={48} />,
   },
   {
     title: "Professionals Area",
     description: "Excepteur sint occaecat pro dent sunt in culpa qui officia.",
-    icon: <FlaskConicalIcon />,
+    icon: <FlaskConicalIcon size={48} />,
   },
   {
     title: "Opening Hours",
     description: "Excepteur sint occaecat pro dent sunt in culpa qui officia.",
-    icon: <HistoryIcon />,
+    icon: <HistoryIcon size={48} />,
   },
 ];
 

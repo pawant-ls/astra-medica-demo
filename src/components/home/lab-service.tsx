@@ -14,7 +14,17 @@ import CustomButton from "../ui/CustomButton";
 
 function LabService() {
   return (
-    <section className="flex flex-col py-40 items-center justify-center space-y-10 bg-gradient-to-r from-primary/15 via-primary/25 to-primary/60">
+    <section className="relative flex flex-col py-40 items-center justify-center space-y-10 bg-gradient-to-r from-primary/15 via-primary/25 to-primary/60">
+      <img
+        className="absolute z-0 top-0 right-0"
+        src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-12.png"
+        alt=""
+      />
+      <img
+        className="absolute z-0 bottom-0 left-0"
+        src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-45.png"
+        alt=""
+      />
       <h6 className="font-heading font-semibold text-md uppercase text-primary">
         Laboratory Services
       </h6>
@@ -23,10 +33,10 @@ function LabService() {
         <br /> Laboratory Service
       </h2>
       <Tabs defaultValue="mTesting">
-        <TabsList className="my-32 flex items-center justify-center gap-6">
+        <TabsList className="my-32 flex items-center justify-center gap-6 transition-all duration-700">
           <TabsTrigger
             value="mTesting"
-            className="px-10 py-8 flex flex-col items-center rounded-lg justify-center gap-4 hover:bg-primary hover:text-white"
+            className="px-10 py-8 flex flex-col items-center rounded-lg justify-center gap-4 hover:bg-primary hover:text-white transition-all duration-700"
           >
             <div className="p-8 bg-primary/10 rounded-full  hover:bg-white hover:text-white">
               <MicroscopeIcon color="#22b6af" size={48} />

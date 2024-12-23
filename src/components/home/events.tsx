@@ -55,8 +55,18 @@ function OurEvents() {
   return (
     <section
       ref={wrapperRef}
-      className="py-48 pb-80 flex flex-col items-center justify-center space-y-8 bg-[url('https://azim.commonsupport.com/Laborex/assets/images/shape/shape-47.png')] bg-contain bg-repeat-y"
+      className="relative py-48 pb-80 flex flex-col items-center justify-center space-y-8 bg-[url('https://azim.commonsupport.com/Laborex/assets/images/shape/shape-47.png')] bg-contain bg-repeat-y"
     >
+         <img
+        className="absolute z-0 top-0 right-0"
+        src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-12.png"
+        alt=""
+      />
+      <img
+        className="absolute z-0 bottom-0 left-0"
+        src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-45.png"
+        alt=""
+      />
       <h6 className="font-heading font-semibold text-md uppercase text-primary">
         Our Events
       </h6>

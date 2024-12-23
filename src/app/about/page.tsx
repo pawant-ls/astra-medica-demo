@@ -4,4 +4,4 @@ function AboutPage() {
   return <AboutComponent />;
 }
 
-export default AboutComponent;
+export default AboutPage;

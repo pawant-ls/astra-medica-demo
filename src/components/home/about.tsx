@@ -28,7 +28,7 @@ function About() {
         scrub: true,
         toggleActions: "play none none none",
       },
-      y: -80,
+      y: -90,
       duration: 1,
     });
   });
@@ -55,7 +55,7 @@ function About() {
         <img
           src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-40.png"
           alt=""
-          className="h-[24vh] absolute bottom-0 left-0"
+          className="h-[24vh] absolute top-32 left-0"
         />
         <img
           src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-40.png"

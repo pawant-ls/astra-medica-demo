@@ -4,6 +4,8 @@ import React, { useRef, useEffect } from "react";
 import CustomButton from "./ui/CustomButton";
 import Link from "next/link";
 import gsap from "gsap";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 interface MenuItem {
   url: string;
@@ -34,6 +36,8 @@ const NAVIGATION_ITEMS: MenuItem[] = [
   },
 ];
 
+const PATHS = ["/", "/about", "/research", "/contact"];
+
 const ANIMATION_CONFIG = {
   initial: {
     y: -100,
@@ -55,8 +59,11 @@ const ANIMATION_CONFIG = {
 } as const;
 
 function Header() {
+  const pathName = usePathname();
   const headRef = useRef<HTMLDivElement | null>(null);
   const linkRef = useRef<HTMLDivElement | null>(null);
+
+  let classNameForActiveLink = "text-primary";
 
   useEffect(() => {
     if (!linkRef.current || !headRef.current) return;
@@ -81,7 +88,10 @@ function Header() {
         <div ref={linkRef} className="flex items-center space-x-6">
           {NAVIGATION_ITEMS?.map((menu) => (
             <Link
-              className="text-md capitalize font-body font-semibold text-black hover:text-primary transition-colors duration-500"
+              className={cn(
+                "text-md capitalize font-body font-semibold text-black hover:text-primary transition-colors duration-500",
+                pathName === menu.url && classNameForActiveLink
+              )}
               key={menu.id}
               href={menu?.url}
             >

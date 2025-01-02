@@ -28,7 +28,7 @@ const cards: Card[] = [
 
 function DetailsSection() {
   return (
-    <section className="flex items-center justify-center bg-white shadow-2xl rounded-3xl">
+    <section className="flex flex-col md:flex-row items-center justify-center bg-white shadow-2xl rounded-3xl">
       {cards?.map((card, i) => (
         <HoverCard
           heading={card.title}

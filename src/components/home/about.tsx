@@ -35,7 +35,7 @@ function About() {
   return (
     <section
       ref={wrapperRef}
-      className="container grid grid-cols-2 items-center gap-8 px-28 mt-48 py-32"
+      className="container grid md:grid-cols-2 grid-cols-1 items-center gap-8 px-4 md:px-28 mt-[100vh] md:mt-48 md:py-32 py-12"
     >
       {/* section1 */}
       <div className="flex relative h-[80vh]">
@@ -43,28 +43,28 @@ function About() {
           ref={img1Ref1}
           src="https://azim.commonsupport.com/Laborex/assets/images/resource/about-2.jpg"
           alt=""
-          className="absolute bottom-10 left-10 z-[1]  rounded-[48px]"
+          className="absolute md:bottom-10 bottom-0 left-10 z-[1]  rounded-[48px]"
         />
         <img
           ref={img1Ref2}
           src="https://azim.commonsupport.com/Laborex/assets/images/resource/about-1.jpg"
           alt=""
-          className="absolute z-10 top-10 right-0  rounded-[48px] border-8 border-white"
+          className="absolute z-10 md:top-10 top-0 right-0  rounded-[48px] border-8 border-white "
         />
 
         <img
           src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-40.png"
           alt=""
-          className="h-[24vh] absolute top-32 left-0"
+          className="md:h-[24vh] h-[10vh] absolute top-32 left-0"
         />
         <img
           src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-40.png"
           alt=""
-          className="h-[24vh] absolute bottom-10 right-0"
+          className="md:h-[24vh] h-[10vh] absolute bottom-10 right-0"
         />
       </div>
       {/* section2 */}
-      <div className="flex flex-col items-start space-y-4">
+      <div className="flex flex-col items-start space-y-4 mt-14 md:mt-0">
         <h6 className="font-heading font-semibold text-md uppercase text-primary">
           About research
         </h6>
@@ -80,7 +80,7 @@ function About() {
           quasi architebeat vitae dicta sunt explicabo nemo enim ipsam
           voluptatem quia voluptassit.
         </p>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-6 gap-4">
           <HoverCard
             heading="Medical Research"
             icon={<Atom />}

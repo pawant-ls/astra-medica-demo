@@ -1,3 +1,5 @@
+"use client";
+
 import { Clock10Icon, LocateIcon, Plus } from "lucide-react";
 import { AvatarCircles } from "../magicui/avatar-circles";
 import { useGSAP } from "@gsap/react";
@@ -55,9 +57,9 @@ function OurEvents() {
   return (
     <section
       ref={wrapperRef}
-      className="relative py-48 pb-80 flex flex-col items-center justify-center space-y-8 bg-[url('https://azim.commonsupport.com/Laborex/assets/images/shape/shape-47.png')] bg-contain bg-repeat-y"
+      className="relative py-12 md:py-48 flex flex-col items-center justify-center space-y-8 bg-[url('https://azim.commonsupport.com/Laborex/assets/images/shape/shape-47.png')] bg-contain bg-repeat-y"
     >
-         <img
+      <img
         className="absolute z-0 top-0 right-0"
         src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-12.png"
         alt=""
@@ -75,7 +77,7 @@ function OurEvents() {
       </h2>
       <div
         ref={elRef}
-        className="container gap-4 grid grid-cols-4 pt-16 opacity-0"
+        className="container gap-40 md:gap-4 grid md:grid-cols-4 grid-cols-1 pt-16 opacity-0"
       >
         {Array.from({ length: 4 }).map((_, i) => (
           <EventsCard key={i} />

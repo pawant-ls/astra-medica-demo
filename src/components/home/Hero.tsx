@@ -12,25 +12,62 @@ import {
 } from "../shadcn/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import DetailsSection from "./Details";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const slideContents = [
+  {
+    title: "Advanced Laboratory Testing & Research Excellence",
+    description: "Providing comprehensive diagnostic solutions with state-of-the-art equipment and expert medical professionals.",
+    image: "path/to/lab-image-1.jpg"
+  },
+  {
+    title: "Precision Diagnostics for Better Healthcare",
+    description: "Offering accurate and timely test results with our advanced molecular diagnostics and pathology services.",
+    image: "path/to/lab-image-2.jpg"
+  },
+  {
+    title: "Research-Driven Medical Laboratory",
+    description: "Leading innovation in clinical diagnostics through continuous research and development.",
+    image: "path/to/lab-image-3.jpg"
+  }
+];
+
 function Hero() {
-  const [carouselApi, setCarouselApi] = React.useState<CarouselApi | null>(
-    null
-  );
+  const [carouselApi, setCarouselApi] = React.useState<CarouselApi | null>(null);
+
+  const arrowImgRef = useRef<HTMLImageElement | null>(null);
+
+  useGSAP(() => {
+    gsap.to(arrowImgRef.current, {
+      y: -20,
+      duration: 1,
+      ease: "power2",
+      repeat: -1,
+      yoyo: true,
+    });
+  });
 
   return (
-    <section className="relative h-[100vh] grid grid-cols-1 items-center md:bg-contain bg-cover bg-repeat-x  w-full bg-[url('https://azim.commonsupport.com/Laborex/assets/images/shape/shape-33.png')]">
+    <section className="relative h-full md:h-[100vh] grid grid-cols-1 items-center md:bg-contain bg-cover bg-repeat-x w-full bg-[url('https://azim.commonsupport.com/Laborex/assets/images/shape/shape-33.png')]">
       <img
-      className="absolute z-0 top-32"
-      src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-36.png" alt="" />
+        className="absolute z-0 top-32"
+        src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-36.png"
+        alt="dotted-line-svg"
+      />
       <img
-      className="absolute z-0 bottom-20 right-0"
-      src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-39.png" alt="" />
+        className="absolute z-0 bottom-20 right-0"
+        src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-39.png"
+        alt=""
+      />
+
       <img
-      className="absolute z-0 top-32 left-[50%]"
-      src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-37.png" alt="" />
+        ref={arrowImgRef}
+        className="absolute z-0 top-32 left-[50%]"
+        src="https://azim.commonsupport.com/Laborex/assets/images/shape/shape-37.png"
+        alt=""
+      />
       <Carousel
         setApi={setCarouselApi}
         plugins={[
@@ -51,7 +88,7 @@ function Hero() {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="absolute -bottom-52 w-[80%] translate-x-[12%]">
+      <div className="absolute top-[90%] md:-bottom-52 w-[80%] translate-x-[12%]">
         <DetailsSection />
       </div>
     </section>
@@ -144,7 +181,7 @@ function Slide({
   return (
     <div
       key={`slide-container-${index}`}
-      className="container grid grid-cols-1 md:grid-cols-2 gap-6 items-center z-10"
+      className="container grid grid-cols-1 md:grid-cols-2 gap-6 py-32 items-center z-10"
     >
       <div
         ref={boxRef1}
@@ -164,7 +201,7 @@ function Slide({
       </div>
       <img
         ref={boxRef2}
-        className="h-[75vh] opacity-0 w-auto bg-contain"
+        className="h-full md:h-[75vh] opacity-0 w-auto bg-contain"
         src="https://azim.commonsupport.com/Laborex/assets/images/banner/banner-img-8.png"
         alt=""
       />

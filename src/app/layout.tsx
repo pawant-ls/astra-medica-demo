@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/footer";
 
 const barlow = Barlow({
   variable: "--font-barlow",
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={` ${barlow.variable} ${openSans.variable} antialiased`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

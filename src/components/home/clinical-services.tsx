@@ -1,6 +1,6 @@
 "use client";
 
-import { MicroscopeIcon } from "lucide-react";
+import { MicroscopeIcon, TestTubeIcon, FlaskConicalIcon, AtomIcon, UserIcon, CheckCircleIcon, ClockIcon } from "lucide-react";
 import { NumberTicker } from "../magicui/number-ticker";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -10,7 +10,7 @@ import Autoplay from "embla-carousel-autoplay";
 
 function ClinicalServices() {
   return (
-    <section className="flex flex-col py-40 items-center justify-center space-y-4 bg-gradient-to-r from-primary/15 via-primary/25 to-primary/60">
+    <section className="flex flex-col md:py-40 py-12 px-4 items-center justify-center space-y-4 bg-gradient-to-r from-primary/15 via-primary/25 to-primary/60">
       <h6 className="font-heading font-semibold text-md uppercase text-primary">
         Clinical Services
       </h6>
@@ -19,7 +19,7 @@ function ClinicalServices() {
         <br />
         We Have Great Skills
       </h2>
-      <div className="grid grid-cols-4 items-center gap-7 pt-8">
+      <div className="container grid md:grid-cols-4 grid-cols-1 items-center gap-7 pt-8">
         {Array.from({ length: 4 }).map((_, i) => (
           <NumbersCard key={i} />
         ))}
@@ -37,10 +37,7 @@ function ClinicalServices() {
       >
         <CarouselContent className="w-full">
           {Array.from({ length: 4 }).map((_, i) => (
-            <CarouselItem
-              key={i}
-              className="basis-10/12 md:basis-1/2 lg:basis-1/3"
-            >
+            <CarouselItem key={i} className="basis-10/12 md:basis-1/2 lg:basis-1/3">
               <HoverCards />
             </CarouselItem>
           ))}
@@ -69,6 +66,7 @@ const NumbersCard = () => {
 const HoverCards = () => {
   const boxRef = useRef(null);
   const hoverRef = useRef<gsap.core.Timeline | null>(null);
+
   useGSAP(() => {
     if (!boxRef) return;
     const tl = gsap.timeline({ paused: true });
@@ -92,7 +90,7 @@ const HoverCards = () => {
     >
       <div
         ref={boxRef}
-        className="bg-gray-500/50 rounded-3xl w-full h-full scale-0 opacity-0  flex items-center justify-center"
+        className="bg-gray-500/50 rounded-3xl w-full h-full scale-0 opacity-0 flex items-center justify-center"
       >
         <div className="bg-white rounded-3xl w-[80%] h-[80%] flex flex-col items-center justify-center">
           <NumbersCard />
@@ -101,5 +99,53 @@ const HoverCards = () => {
     </div>
   );
 };
+
+const services = [
+  {
+    title: "Molecular Diagnostics",
+    description: "Advanced genetic testing and molecular analysis for precise disease diagnosis and treatment planning.",
+    icon: <MicroscopeIcon size={48} />
+  },
+  {
+    title: "Clinical Pathology",
+    description: "Comprehensive laboratory testing of blood, urine, and other body fluids for disease diagnosis.",
+    icon: <TestTubeIcon size={48} />
+  },
+  {
+    title: "Microbiology Testing",
+    description: "Identification and analysis of microorganisms for infection diagnosis and treatment.",
+    icon: <FlaskConicalIcon size={48} />
+  },
+  {
+    title: "Immunology Services",
+    description: "Specialized testing for immune system disorders and autoimmune conditions.",
+    icon: <AtomIcon size={48} />
+  }
+];
+
+const stats = [
+  {
+    value: 50000,
+    label: "Tests Performed Monthly",
+    icon: <TestTubeIcon />
+  },
+  {
+    value: 150,
+    label: "Expert Scientists",
+    icon: <UserIcon />
+  },
+  {
+    value: 98,
+    label: "Accuracy Rate",
+    suffix: "%",
+    icon: <CheckCircleIcon />
+  },
+  {
+    value: 24,
+    label: "Hour Service",
+    suffix: "/7",
+    icon: <ClockIcon />
+  }
+];
 
 export default ClinicalServices;

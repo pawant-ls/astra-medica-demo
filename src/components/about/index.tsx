@@ -9,16 +9,19 @@ import TestimonialsAbout from "./testimonials-about";
 
 function AboutComponent() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <SecondaryPageHero heroText="About astra medica" />
-      <div className="-mt-[20vh]">
+      <div className="-mt-[20vh] sm:-mt-[15vh] md:-mt-[20vh]">
         <About />
       </div>
       <ResearchTopic />
-      <ClinicalService />
+      <div className="py-8 sm:py-12 md:py-16">
+        <ClinicalService />
+      </div>
       <TestimonialsAbout />
-
-      <OurTeam />
+      <div className="py-8 sm:py-12 md:py-16">
+        <OurTeam />
+      </div>
     </main>
   );
 }

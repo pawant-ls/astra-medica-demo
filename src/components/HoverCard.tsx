@@ -19,7 +19,6 @@ function HoverCard({ heading, para, icon }: HoverProps) {
   useGSAP(() => {
     if (!circleRef) return;
     const tl = gsap.timeline({ paused: true });
-
     tl.fromTo(
       circleRef.current,
       {

@@ -28,6 +28,7 @@ interface NumbersCardProps {
 interface ServiceCardProps {
   title: string;
   description: string;
+  image?: string;
 }
 
 const services = [
@@ -36,24 +37,32 @@ const services = [
     description:
       "Advanced genetic testing and molecular analysis for precise disease diagnosis and treatment planning.",
     icon: <MicroscopeIcon size={48} />,
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/resource/testimonial-1.jpg",
   },
   {
     title: "Clinical Pathology",
     description:
       "Comprehensive laboratory testing of blood, urine, and other body fluids for disease diagnosis.",
     icon: <TestTubeIcon size={48} />,
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/resource/chooseus-1.jpg",
   },
   {
     title: "Microbiology Testing",
     description:
       "Identification and analysis of microorganisms for infection diagnosis and treatment.",
     icon: <FlaskConicalIcon size={48} />,
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/gallery/project-2.jpg",
   },
   {
     title: "Immunology Services",
     description:
       "Specialized testing for immune system disorders and autoimmune conditions.",
     icon: <AtomIcon size={48} />,
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/gallery/project-4.jpg",
   },
 ];
 
@@ -100,7 +109,7 @@ const NumbersCard = memo(({ value, label, icon, suffix }: NumbersCardProps) => {
 
 NumbersCard.displayName = "NumbersCard";
 
-const HoverCards = memo(({ description, title }: ServiceCardProps) => {
+const HoverCards = memo(({ description, title, image }: ServiceCardProps) => {
   const boxRef = useRef(null);
   const hoverRef = useRef<gsap.core.Timeline | null>(null);
 
@@ -123,7 +132,8 @@ const HoverCards = memo(({ description, title }: ServiceCardProps) => {
     <div
       onMouseEnter={() => hoverRef.current?.play()}
       onMouseLeave={() => hoverRef.current?.reverse()}
-      className="rounded-3xl overflow-hidden h-[40vh] w-full flex items-center justify-center bg-[url('https://azim.commonsupport.com/Laborex/assets/images/gallery/project-1.jpg')] bg-cover bg-no-repeat"
+      style={{ backgroundImage: `url("${image}")` }}
+      className={`rounded-3xl overflow-hidden h-[40vh] w-full flex items-center justify-center bg-cover bg-no-repeat`}
     >
       <div
         ref={boxRef}
@@ -140,14 +150,14 @@ HoverCards.displayName = "HoverCards";
 
 const ServiceCard = memo(({ title, description }: ServiceCardProps) => {
   return (
-    <div className="flex flex-col items-center justify-start gap-4 p-8 space-y-2">
+    <div className="flex flex-col items-center justify-center gap-4 p-8 space-y-2">
       {/* {icon} */}
       <PlusCircleIcon size={84} color="#22b6af" />
       <div>
-        <h6 className="font-heading font-bold text-xl text-black">
+        <h6 className="font-heading font-bold text-xl text-black text-center">
           {title}
         </h6>
-        <p className="font-body text-gray-600 text-sm">
+        <p className="font-body text-gray-600 text-sm text-center">
           {description}
         </p>
       </div>
@@ -199,6 +209,7 @@ function ClinicalServices() {
               <HoverCards
                 title={service.title}
                 description={service.description}
+                image={service.image}
               />
             </CarouselItem>
           ))}

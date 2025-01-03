@@ -1,7 +1,40 @@
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem } from "../shadcn/carousel";
 import CustomButton from "../ui/CustomButton";
-import { Button } from "../shadcn/ShadButton";
+
+type Article = {
+  title: string;
+  author: string;
+  description: string;
+  image: string;
+};
+
+const articles: Article[] = [
+  {
+    title: "Advances in Molecular Diagnostics for Cancer Detection",
+    author: "Dr. Robert Chen",
+    description:
+      "New developments in molecular diagnostic techniques are revolutionizing early cancer detection and treatment planning.",
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/resource/chooseus-2.jpg",
+  },
+  {
+    title: "The Role of Clinical Laboratory in COVID-19 Testing",
+    author: "Dr. Lisa Thompson",
+    description:
+      "How modern laboratories are adapting to meet the challenges of pandemic testing requirements.",
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/news/news-5.jpg",
+  },
+  {
+    title: "Automation in Clinical Laboratory Testing",
+    author: "Dr. James Wilson",
+    description:
+      "Exploring how automation technology is improving accuracy and efficiency in medical testing.",
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/news/news-4.jpg",
+  },
+];
 
 function Articles() {
   return (
@@ -24,12 +57,9 @@ function Articles() {
         }}
       >
         <CarouselContent className="w-full py-10">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <CarouselItem
-              key={i}
-              className=" md:basis-1/2 lg:basis-1/2"
-            >
-              <ArticlesCard />
+          {articles.map((article, i) => (
+            <CarouselItem key={i} className=" md:basis-1/2 lg:basis-1/2">
+              <ArticlesCard {...article} />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -38,54 +68,30 @@ function Articles() {
   );
 }
 
-const ArticlesCard = () => {
+const ArticlesCard = ({ title, author, description, image }: Article) => {
   return (
     <div className=" grid md:grid-cols-2 grid-cols-1 items-start justify-start gap-8 bg-white rounded-[50px] shadow-lg">
       <div>
         <img
-          src="https://azim.commonsupport.com/Laborex/assets/images/news/news-5.jpg"
+          src={image}
           alt="professional-with-microscope"
-          className="bg-cover object-cover rounded-l-[50px] w-full h-[40vh]"
+          className="bg-cover object-cover rounded-l-[50px] w-full h-[50vh]"
         />
       </div>
       <div className="pt-10 space-y-6">
         <p className="font-heading font-bold text-2xl md:w-[80%] w-full text-black">
-          Task force propose colon cancer screening
+          {title}
         </p>
         <p className="font-body font-normal text-md md:w-[80%] w-full text-black/80">
-          by merry lewis, 3comments
+          {author}, 3comments
         </p>
         <p className="font-body font-normal text-sm md:w-[80%] w-full text-black/80">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          {description}
         </p>
         <CustomButton renderText="read more" />
       </div>
     </div>
   );
 };
-
-const articles = [
-  {
-    title: "Advances in Molecular Diagnostics for Cancer Detection",
-    author: "Dr. Robert Chen",
-    date: "March 15, 2024",
-    description: "New developments in molecular diagnostic techniques are revolutionizing early cancer detection and treatment planning.",
-    image: "/images/molecular-diagnostics.jpg"
-  },
-  {
-    title: "The Role of Clinical Laboratory in COVID-19 Testing",
-    author: "Dr. Lisa Thompson",
-    date: "March 12, 2024",
-    description: "How modern laboratories are adapting to meet the challenges of pandemic testing requirements.",
-    image: "/images/covid-testing.jpg"
-  },
-  {
-    title: "Automation in Clinical Laboratory Testing",
-    author: "Dr. James Wilson",
-    date: "March 10, 2024",
-    description: "Exploring how automation technology is improving accuracy and efficiency in medical testing.",
-    image: "/images/lab-automation.jpg"
-  }
-];
 
 export default Articles;

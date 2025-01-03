@@ -19,23 +19,31 @@ gsap.registerPlugin(ScrollTrigger);
 const slideContents = [
   {
     title: "Advanced Laboratory Testing & Research Excellence",
-    description: "Providing comprehensive diagnostic solutions with state-of-the-art equipment and expert medical professionals.",
-    image: "path/to/lab-image-1.jpg"
+    description:
+      "Providing comprehensive diagnostic solutions with state-of-the-art equipment and expert medical professionals.",
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/banner/banner-img-8.png",
   },
   {
     title: "Precision Diagnostics for Better Healthcare",
-    description: "Offering accurate and timely test results with our advanced molecular diagnostics and pathology services.",
-    image: "path/to/lab-image-2.jpg"
+    description:
+      "Offering accurate and timely test results with our advanced molecular diagnostics and pathology services.",
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/banner/banner-img-7.png",
   },
   {
     title: "Research-Driven Medical Laboratory",
-    description: "Leading innovation in clinical diagnostics through continuous research and development.",
-    image: "path/to/lab-image-3.jpg"
-  }
+    description:
+      "Leading innovation in clinical diagnostics through continuous research and development.",
+    image:
+      "https://azim.commonsupport.com/Laborex/assets/images/banner/banner-img-9.png",
+  },
 ];
 
 function Hero() {
-  const [carouselApi, setCarouselApi] = React.useState<CarouselApi | null>(null);
+  const [carouselApi, setCarouselApi] = React.useState<CarouselApi | null>(
+    null
+  );
 
   const arrowImgRef = useRef<HTMLImageElement | null>(null);
 
@@ -81,9 +89,15 @@ function Hero() {
         className="w-full"
       >
         <CarouselContent>
-          {Array.from({ length: 6 }).map((_, i) => (
-            <CarouselItem key={`slide-${i}`} className="">
-              <Slide index={i} carouselApi={carouselApi} />
+          {slideContents.map((slide, i) => (
+            <CarouselItem key={`slide-${slide.title}`} className="">
+              <Slide
+                index={i}
+                carouselApi={carouselApi}
+                title={slide.title}
+                description={slide.description}
+                image={slide.image}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -98,9 +112,15 @@ function Hero() {
 function Slide({
   index,
   carouselApi,
+  title,
+  description,
+  image,
 }: {
   index: number;
   carouselApi: CarouselApi | null;
+  title: string;
+  description: string;
+  image: string;
 }) {
   const boxRef1 = useRef(null);
   const boxRef2 = useRef<HTMLDivElement | null>(null);
@@ -188,11 +208,10 @@ function Slide({
         className="flex flex-col items-start justify-between space-y-10"
       >
         <h1 className="font-heading opacity-0 font-bold text-4xl md:text-6xl capitalize text-black">
-          we are responsible for the safety of cosmetics testing{" "}
+          {title}
         </h1>
         <p className="font-body opacity-0 font-regular w-[80%] text-md">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate ex
-          eveniet quo modi
+          {description}
         </p>
         <div className="grid opacity-0 grid-cols-1 md:grid-cols-2 items-center gap-6">
           <CustomButton renderText="our services" />
@@ -202,7 +221,7 @@ function Slide({
       <img
         ref={boxRef2}
         className="h-full md:h-[75vh] opacity-0 w-auto bg-contain"
-        src="https://azim.commonsupport.com/Laborex/assets/images/banner/banner-img-8.png"
+        src={image}
         alt=""
       />
     </div>

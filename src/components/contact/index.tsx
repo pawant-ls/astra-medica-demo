@@ -18,7 +18,7 @@ function ContactUs() {
           className=""
         />
         {/*card */}
-        <div className="absolute -bottom-28 translate-x-40 bg-blue-900 rounded-xl w-[80%] mx-auto z-10 text-white py-16">
+        <div className="absolute -bottom-80 md:-bottom-28 translate-x-4 md:translate-x-40 bg-blue-900 rounded-xl w-[90%] md:w-[80%] mx-auto z-10 text-white py-16">
           <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Office Location */}
             <div className="flex items-start gap-4">
@@ -67,7 +67,7 @@ function ContactUs() {
           </div>
         </div>
       </div>
-      <div className="py-48 flex flex-col items-center justify-center space-y-8">
+      <div className="py-48 mt-40 md:mt-0 flex flex-col items-center justify-center space-y-8">
         <h6 className="font-heading font-semibold text-md uppercase text-primary">
           Research Topic
         </h6>

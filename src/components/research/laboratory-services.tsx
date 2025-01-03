@@ -1,6 +1,9 @@
 import { cn } from "@/lib/utils";
 import { FlaskConicalIcon } from "lucide-react";
 import CustomButton from "../ui/CustomButton";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 function LaboratoryServices() {
   return (
@@ -32,22 +35,83 @@ function LaboratoryServices() {
 }
 
 const LabCards = () => {
+  const circleRef = useRef<HTMLDivElement | null>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const [hovered, setHovered] = useState<boolean>(false);
+
+  useGSAP(() => {
+    if (!circleRef) return;
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(
+      circleRef.current,
+      {
+        opacity: 1,
+      },
+      {
+        height: "100%",
+        opacity: 1,
+        ease: "back",
+        duration: 0.8,
+      }
+    );
+    tlRef.current = tl;
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+  const handleMouseEnter = () => {
+    tlRef?.current?.play();
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    tlRef?.current?.reverse();
+    setHovered(false);
+  };
+
   return (
-    <div className="flex flex-col justify-start items-start min-h-[300px] sm:h-[35vh] md:h-[40vh] p-4 sm:p-6 md:px-8 space-y-4 sm:space-y-6 cursor-pointer bg-white rounded-xl">
-      <div className="relative transition-all duration-700 overflow-hidden grid grid-cols-1 items-center p-6 sm:p-8 bg-primary/10 rounded-full">
-        <div className="absolute opacity-0 z-0 bg-primary rounded-full inset-0 m-auto h-[32px] w-[32px]"></div>
-        <div>
-          <FlaskConicalIcon color="#22b6af" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="relative overflow-hidden flex flex-col justify-start items-start min-h-[300px] sm:h-[35vh] md:h-[40vh]  space-y-4 sm:space-y-6 cursor-pointer bg-white rounded-xl"
+    >
+      <div
+        ref={circleRef}
+        className="absolute opacity-0 bg-primary top-0 h-[0px] w-full"
+      ></div>
+      <div className="flex items-center justify-center py-2">
+        <div
+          className={cn(
+            "z-10 transition-all duration-500",
+            hovered ? "text-white" : "text-primary"
+          )}
+        >
+          <FlaskConicalIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 ml-4" />
         </div>
       </div>
 
-      <h6 className="font-heading font-bold text-lg sm:text-xl capitalize text-black">
+      <h6
+        className={cn(
+          "z-10 font-heading font-bold text-lg sm:text-xl capitalize  ml-4",
+          hovered ? "text-white" : "text-black"
+        )}
+      >
         Clinical Microbiology Tests
       </h6>
-      <p className="font-body font-normal text-sm sm:text-md text-black">
+      <p
+        className={cn(
+          "z-10 font-body font-normal text-sm sm:text-md  m-4",
+          hovered ? "text-white" : "text-black"
+        )}
+      >
         Excepteur sint ocecat pro dent sunt in culpa.
       </p>
-      <CustomButton renderText="read more" className="text-sm sm:text-base" />
+      <CustomButton
+        renderText="read more"
+        className="text-sm sm:text-base !w-[90%] mx-2 bg-white !text-black hover:!text-white"
+      />
     </div>
   );
 };

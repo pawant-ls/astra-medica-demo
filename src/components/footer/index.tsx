@@ -9,7 +9,10 @@ function Footer() {
           <h2 className="font-heading font-bold text-white text-4xl md:w-[50%] w-full">
             Accurate Product Testing by Expert Scientists
           </h2>
-          <CustomButton renderText="book free sampling here" />
+          <CustomButton
+            renderText="book free sampling here"
+            className="bg-white !text-black hover:!text-white"
+          />
         </div>
       </div>
       <div className="grid md:grid-cols-4 grid-cols-1 gap-20 md:py-32 py-12 bg-primary/10 md:px-20 px-4">

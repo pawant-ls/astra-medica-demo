@@ -6,7 +6,7 @@ import { Carousel, CarouselContent, CarouselItem } from "../shadcn/carousel";
 
 function Testimonials() {
   return (
-    <section className="-mt-32 md:translate-x-[14%] translate-x-0 md:w-[80%] w-full">
+    <section className="mt-0 mx-4 md:-mt-32 md:translate-x-[14%] translate-x-0 md:w-[80%] w-[90%]">
       <div className="container grid md:grid-cols-2 grid-cols-1 items-center justify-start bg-white rounded-[50px] shadow-2xl">
         <div className="h-full md:space-y-4 p-4 pt-8 md:p-10">
           <h6 className="font-heading font-semibold text-md uppercase text-primary">
@@ -82,22 +82,22 @@ const testimonials = [
     author: "Dr. Sarah Johnson",
     position: "Chief of Medicine",
     location: "Central Hospital",
-    rating: 5
+    rating: 5,
   },
   {
     text: "As a research partner, Astra Pharma's laboratory has provided exceptional support with their state-of-the-art facilities and expert staff.",
     author: "Prof. Michael Chen",
     position: "Research Director",
     location: "Medical Research Institute",
-    rating: 5
+    rating: 5,
   },
   {
     text: "Their commitment to quality and precision in pathology testing has significantly improved our diagnostic capabilities.",
     author: "Dr. Emily Rodriguez",
     position: "Pathologist",
     location: "Regional Medical Center",
-    rating: 5
-  }
+    rating: 5,
+  },
 ];
 
 export default Testimonials;

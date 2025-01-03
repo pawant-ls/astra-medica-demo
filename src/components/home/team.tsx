@@ -1,4 +1,8 @@
+import { cn } from "@/lib/utils";
+import { useGSAP } from "@gsap/react";
 import { Facebook, Linkedin, Twitter } from "lucide-react";
+import { useRef, useState } from "react";
+import gsap from "gsap";
 
 function OurTeam() {
   return (
@@ -19,39 +23,86 @@ function OurTeam() {
 }
 
 const TeamCard = () => {
+  const circleRef = useRef<HTMLDivElement | null>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const [hovered, setHovered] = useState<boolean>(false);
+
+  useGSAP(() => {
+    if (!circleRef) return;
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo(
+      circleRef.current,
+      {
+        opacity: 1,
+        scale: 0,
+      },
+      {
+        scale: 20,
+        opacity: 1,
+        ease: "back",
+        duration: 0.8,
+      }
+    );
+    tlRef.current = tl;
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+  const handleMouseEnter = () => {
+    tlRef?.current?.play();
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    tlRef?.current?.reverse();
+    setHovered(false);
+  };
+
   return (
-    <div className="relative">
-      <div className="bg-primary overflow-hidden h-[30vh] md:h-[60vh] rounded-tr-[50%] rounded-tl-[50%] rounded-bl-[50%] rounded-br-3xl">
+    <div
+      className="relative cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* <div
+        ref={circleRef}
+        className="absolute opacity-0 z-10 bg-gray-700/50 rounded-full inset-0 m-auto h-[32px] w-[32px]"
+      ></div> */}
+      <div className="bg-transparent overflow-hidden h-[30vh] md:h-[60vh] rounded-tr-[50%] rounded-tl-[50%] rounded-bl-[50%] rounded-br-3xl">
         <img
           src="https://azim.commonsupport.com/Laborex/assets/images/resource/testimonial-1.jpg"
           alt="team-img1"
-          className="object-cover bg-cover scale-150"
+          className={cn(
+            "object-cover bg-cover scale-150 z-0",
+            hovered && "scale-[1.6] transition-all duration-1000"
+          )}
         />
       </div>
       <div className="md:-mt-32 -mt-12 absolute flex flex-col items-center justify-center space-y-4 left-10 rounded-[50px] md:h-[28vh] h-[20vh] w-[80%] bg-white shadow-2xl p-8">
-        <h6 className="font-heading font-bold text-xl capitalize">
+        <h6
+          className={cn(
+            "font-heading font-bold text-xl capitalize z-10 transition-all duration-500 text-black"
+          )}
+        >
           Dr. Gerard Butler
         </h6>
-        <p className="font-body font-normal text-mg capitalize text-black/50">
+        <p
+          className={cn(
+            "font-body font-normal text-mg text-black/50 capitalize z-10 transition-all duration-500"
+          )}
+        >
           PHD Student
         </p>
-        <div className="flex items-center justify-center gap-4">
-          <a
-            href="#"
-            className="text-black/50 hover:text-primary transition-colors"
-          >
+        <div className="flex items-center justify-center gap-4 z-10">
+          <a href="#" className={cn("transition-colors text-black/50")}>
             <Facebook size={20} />
           </a>
-          <a
-            href="#"
-            className="text-black/50 hover:text-primary transition-colors"
-          >
+          <a href="#" className={cn("transition-colors text-black/50")}>
             <Linkedin size={20} />
           </a>
-          <a
-            href="#"
-            className="text-black/50 hover:text-primary transition-colors"
-          >
+          <a href="#" className={cn("transition-colors text-black/50")}>
             <Twitter size={20} />
           </a>
         </div>

@@ -50,13 +50,13 @@ function LabResearch() {
             ref={img1Ref2}
             src="https://azim.commonsupport.com/Laborex/assets/images/resource/about-6.jpg"
             alt="Laboratory equipment"
-            className="absolute bottom-10 left-10 z-[1] rounded-[48px] w-3/4 h-auto object-cover"
+            className="absolute top-10 left-10 z-[1] rounded-[48px] w-3/4 h-auto object-cover"
           />
           <img
             ref={img1Ref1}
             src="https://azim.commonsupport.com/Laborex/assets/images/resource/about-7.jpg"
             alt="Research facility"
-            className="absolute z-10 bottom-0 right-0 rounded-[48px] border-8 border-white w-3/4 h-auto object-cover"
+            className="absolute z-10 bottom-20 right-0 rounded-[48px] border-8 border-white w-3/4 h-auto object-cover"
           />
         </div>
         {/* section2 */}

@@ -4,7 +4,7 @@ import { StarIcon } from "lucide-react";
 
 function TestimonialsAbout() {
   return (
-    <section className="container px-4 py-8 sm:py-12 md:py-16">
+    <section className=" px-0 py-8 sm:py-12 md:py-16">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-start w-full bg-white shadow-2xl rounded-lg overflow-hidden">
         <div className="h-[300px] md:h-auto">
           <img

@@ -98,7 +98,7 @@ function Header() {
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="text-xl md:text-2xl font-bold">
-            Astra Pharma
+            Astra Medica
           </Link>
 
           <div

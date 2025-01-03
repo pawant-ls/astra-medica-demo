@@ -21,7 +21,7 @@ function AboutComponent() {
       <div className="py-0 -mt-[35vh] md:-mt-[40vh] md:py-16">
         <TestimonialsAbout />
       </div>
-      <div className="py-8 sm:py-12 md:py-16">
+      <div className="py-8 sm:py-12 md:py-16 -mt-[15vh] md:-mt-[25vh]">
         <OurTeam />
       </div>
     </main>

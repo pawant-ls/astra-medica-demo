@@ -68,7 +68,7 @@ function OurTeam() {
     const cards = gsap.utils.toArray(elRef.current?.children || []);
 
     gsap.set(cards, {
-      y: 20,
+      y: 40,
       opacity: 0,
     });
 
@@ -81,8 +81,8 @@ function OurTeam() {
         },
         y: 0,
         opacity: 1,
-        duration: 0.2,
-        delay: index * 0.1,
+        duration: 0.6,
+        delay: index * 0.2,
         ease: "power3.out",
       });
     });
@@ -101,7 +101,7 @@ function OurTeam() {
       </h2>
       <div
         ref={elRef}
-        className="container md:px-10 pt-10 grid md:grid-cols-3 grid-cols-1 items-center md:gap-10 gap-36"
+        className="container md:px-10 pt-10 grid md:grid-cols-3 grid-cols-1 items-center md:gap-10 gap-52"
       >
         {teamData.map((member, i) => (
           <TeamCard
@@ -160,7 +160,7 @@ const TeamCard = ({ name, position, image }: TeamCardProps) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="bg-transparent overflow-hidden h-[30vh] md:h-[60vh] rounded-tr-[50%] rounded-tl-[50%] rounded-bl-[50%] rounded-br-3xl">
+      <div className="bg-transparent overflow-hidden h-[40vh] md:h-[60vh] rounded-tr-[50%] rounded-tl-[50%] rounded-bl-[50%] rounded-br-3xl">
         <img
           src={image}
           alt={name}
@@ -170,7 +170,7 @@ const TeamCard = ({ name, position, image }: TeamCardProps) => {
           )}
         />
       </div>
-      <div className="md:-mt-32 -mt-12 absolute flex flex-col items-center justify-center space-y-4 left-10 rounded-[50px] md:h-[28vh] h-[20vh] w-[80%] bg-white shadow-2xl p-8">
+      <div className="md:-mt-32 -mt-12 absolute flex flex-col items-center justify-center space-y-4 left-4 md:left-10 rounded-[50px] md:h-[28vh] h-[28vh] w-[90%] bg-white shadow-2xl p-8">
         <h6
           className={cn(
             "font-heading font-bold text-xl capitalize z-10 transition-all duration-500 text-black"

@@ -127,7 +127,7 @@ function ClinicalService() {
       <h6 className="font-heading font-semibold text-md uppercase text-primary">
         Clinical Services
       </h6>
-      <h2 className="font-heading font-bold text-center text-black text-4xl">
+      <h2 className="font-heading font-bold text-center text-black text-2xl md:text-4xl">
         Explore Our Main Services.
       </h2>
       <div
@@ -139,7 +139,7 @@ function ClinicalService() {
         ))}
       </div>
       <CustomButton renderText="more services" />
-      <div className="h-[40vh] bg-[url('https://azim.commonsupport.com/Laborex/assets/images/background/funfact-1.jpg')] container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4">
+      <div className="h-full py-4 md:h-[40vh] bg-[url('https://azim.commonsupport.com/Laborex/assets/images/background/funfact-1.jpg')] container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center gap-4">
         {labStats.slice(0, 4).map((stat, i) => (
           <NumbersCard key={i} value={stat.value} label={stat.label} />
         ))}
@@ -237,7 +237,7 @@ const ClinicalServiceCard = ({
           )}
         />
       </div>
-      <div className=" absolute top-24 md:top-36 right-30">
+      <div className=" absolute top-32 md:top-36 right-30">
         <div className="relative flex justify-center items-center p-8 bg-primary rounded-full overflow-hidden">
           <div
             ref={circleRef}

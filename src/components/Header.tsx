@@ -65,6 +65,11 @@ const ANIMATION_CONFIG = {
     duration: 1,
     ease: "power1",
   },
+  closeButtonAnimation: {
+    rotate: 360,
+    duration: 2,
+    ease: "power1",
+  },
 } as const;
 
 function Header() {
@@ -72,6 +77,8 @@ function Header() {
   const headRef = useRef<HTMLDivElement | null>(null);
   const linkRef = useRef<HTMLDivElement | null>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
+  const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const closeIconRef = useRef<HTMLDivElement | null>(null);
 
   let classNameForActiveLink = "text-primary";
 
@@ -82,12 +89,19 @@ function Header() {
   useEffect(() => {
     if (!linkRef.current || !headRef.current) return;
     const el = gsap.utils.toArray<HTMLDivElement>(linkRef.current.children);
+    const tl = gsap.timeline({ paused: true });
 
     gsap.set([headRef.current, ...el], ANIMATION_CONFIG.initial);
 
     gsap.to(el, ANIMATION_CONFIG.linkAnimation);
 
     gsap.to(headRef.current, ANIMATION_CONFIG.headerAnimation);
+    tl.to(closeIconRef.current, ANIMATION_CONFIG.closeButtonAnimation);
+    tlRef.current = tl;
+
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   return (
@@ -120,46 +134,55 @@ function Header() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Drawer>
+            <Drawer
+              onOpenChange={() => tlRef.current?.play()}
+              direction="right"
+            >
               <DrawerTrigger asChild>
                 <button className="md:hidden p-2 hover:bg-gray-100 rounded-lg">
                   <Menu className="w-6 h-6" />
                 </button>
               </DrawerTrigger>
-              <DrawerContent className="h-[96%] bg-white">
-                <DrawerHeader className="border-b border-border/40 pb-4">
-                  <div className="flex items-center justify-between">
-                    <DrawerTitle className="font-heading text-2xl">
-                      Astra Pharma
-                    </DrawerTitle>
-                    <DrawerClose ref={drawerCloseRef} className="rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:pointer-events-none">
-                      <X className="h-6 w-6" />
+              <DrawerContent className="h-screen bg-[#0B1B35] text-white data-[side=left]:slide-in-from-left">
+                <DrawerHeader className="border-b border-white/10 pb-4">
+                  <div className="flex items-center justify-between px-4">
+                    <div className="flex items-center gap-2">
+                      <DrawerTitle className="font-heading text-2xl text-white">
+                        Astra Medica
+                      </DrawerTitle>
+                    </div>
+                    <DrawerClose ref={drawerCloseRef}>
+                      <X ref={closeIconRef} className="h-6 w-6 text-white" />
                       <span className="sr-only">Close</span>
                     </DrawerClose>
                   </div>
                 </DrawerHeader>
-                <div className="px-4">
-                  <div className="flex flex-col gap-4 mt-8">
-                    {NAVIGATION_ITEMS?.map((menu) => (
-                      <Link
-                        key={menu.id}
-                        href={menu?.url}
-                        className={cn(
-                          "p-4 rounded-lg text-lg capitalize font-body font-semibold hover:bg-gray-100",
-                          pathName === menu.url && "bg-primary/10 text-primary"
-                        )}
-                        onClick={handleLinkClick}
-                      >
-                        {menu?.menu}
-                      </Link>
-                    ))}
-                    <div className="mt-4">
-                      <CustomButton
-                        renderText="request a quote"
-                        className="w-full justify-center"
-                        onClick={handleLinkClick}
-                      />
-                    </div>
+
+                {/* Navigation Menu */}
+                <div className="flex flex-col p-4">
+                  {NAVIGATION_ITEMS?.map((menu) => (
+                    <Link
+                      key={menu.id}
+                      href={menu?.url}
+                      className={cn(
+                        "py-4 px-2 border-b border-white/10 text-lg capitalize font-body font-semibold text-white/80 hover:text-white flex items-center justify-between",
+                        pathName === menu.url && "text-primary"
+                      )}
+                      onClick={handleLinkClick}
+                    >
+                      {menu?.menu}
+                      <span className="text-white/50">→</span>
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Contact Info Section */}
+                <div className="mt-auto p-4">
+                  <h3 className="text-xl font-heading mb-4">Contact Info</h3>
+                  <div className="space-y-4 text-white/80">
+                    <p>Panvel, Navi Mumbai, Maharashtra, India</p>
+                    <p>+91-923-458-8595</p>
+                    <p>info@astra-medica.in</p>
                   </div>
                 </div>
               </DrawerContent>
